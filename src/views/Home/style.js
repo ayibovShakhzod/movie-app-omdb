@@ -19,8 +19,8 @@ export const CardsCont = styled.div`
 
 export const CardItem = styled.div`
   display: flex;
-  width: 25%;
-  flex: 1 0 21%;
+  width: calc(25% - 16px);
+  flex: 1 1 calc(25% - 16px);
 `;
 
 export const SearchText = styled.h1`
