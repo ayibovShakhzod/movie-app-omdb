@@ -17,7 +17,6 @@ export default () => {
     Promise.all([movie.searchMovies('MineCraft')]).then(
       ([allMovies]) => {
         if (!unmounted) {
-          console.log(allMovies.Search[4].Poster);
           setMovies(allMovies.Search);
         }
       }
