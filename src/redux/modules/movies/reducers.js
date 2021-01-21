@@ -2,7 +2,8 @@ import types from '../../../constants/action-types';
 
 const initialState = {
   movie: {},
-  movies: []
+  movies: [],
+  searchValue: 'Mine'
 };
 
 const map = {
@@ -13,6 +14,10 @@ const map = {
   [types.SET_MOVIES]: (state, { movies }) => ({
     ...state,
     movies
+  }),
+  [types.SEARCH_VALUE]: (state, { searchValue }) => ({
+    ...state,
+    searchValue
   })
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
   Container,
@@ -7,38 +7,38 @@ import {
   SearchText
 } from './style';
 import Navbar from '../../components/Navbar';
-// import movie from '../../services/movie';
+import movie from '../../services/movie';
 import Card from '../../components/Card';
 import ImgMovie from '../../assets/img/movieInfo.jpg';
 // import { setMovies } from '../../redux/modules/movies/actions';
 
 export default () => {
   // const dispatch = useDispatch();
-
-  useEffect(() => {
-    // let unmounted = false;
-    // Promise.all([movie.searchMovies('movie')]).then(
-    //   ([allMovies]) => {
-    //     if (!unmounted) {
-    //       dispatch(setMovies(allMovies.Search));
-    //     }
-    //   }
-    // );
-    // return () => {
-    //   unmounted = true;
-    // };
-  }, []);
-  const movies = useSelector(
-    ({ moviesReducer }) => moviesReducer.movies
+  const [movies, setMovies] = useState([]);
+  const searchValue = useSelector(
+    ({ moviesReducer }) => moviesReducer.searchValue
   );
-  console.log(movies);
+  useEffect(() => {
+    let unmounted = false;
+    Promise.all([movie.searchMovies(searchValue)]).then(
+      ([allMovies]) => {
+        if (!unmounted) {
+          setMovies(allMovies.Search);
+        }
+      }
+    );
+    return () => {
+      unmounted = true;
+    };
+  }, [setMovies]);
+
   return (
     <Container>
       <Navbar />
       <SearchText>sdas</SearchText>
       <CardsCont>
         {movies ? movies.map((item) => (
-          <CardItem key={item.Title + Date.now()}>
+          <CardItem key={Date.now()}>
             <Card
               title={item.Title}
               year={item.Year}

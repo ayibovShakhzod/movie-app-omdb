@@ -9,3 +9,8 @@ export const setMovies = (movies) => ({
   type: types.SET_MOVIES,
   movies
 });
+
+export const setSearchValue = (searchValue) => ({
+  type: types.SEARCH_VALUE,
+  searchValue
+});

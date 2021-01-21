@@ -3,23 +3,15 @@ import { useDispatch } from 'react-redux';
 import {
   Box, Input, Button, Icon
 } from './style';
-import movie from '../../../services/movie';
-import { setMovies } from '../../../redux/modules/movies/actions';
+import { setSearchValue } from '../../../redux/modules/movies/actions';
 
 export default () => {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
-  // const [typingTimeOut, setTypingTimeOut] = useState(0);
+  const [value, setValue] = useState();
 
   const handleSearch = (e) => {
+    dispatch(setSearchValue(e.target.value));
     setValue(e.target.value);
-    if (value && value.length > 0) {
-      Promise.all([
-        movie.searchMovies(value)
-      ]).then(([allMovies]) => {
-        dispatch(setMovies(allMovies.Search));
-      });
-    }
   };
 
   return (
