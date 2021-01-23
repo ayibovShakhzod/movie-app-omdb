@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const CardsCont = styled.div`
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
 `;
@@ -19,8 +18,8 @@ export const CardsCont = styled.div`
 
 export const CardItem = styled.div`
   display: flex;
-  width: calc(25% - 16px);
-  flex: 1 1 calc(25% - 16px);
+  max-width: calc(25% - 16px);
+  flex: 0 0 calc(25% - 16px);
 `;
 
 export const SearchText = styled.h1`

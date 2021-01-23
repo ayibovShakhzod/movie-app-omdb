@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useContext, useEffect } from 'react';
+// import { useSelector } from 'react-redux';
 import {
   Container,
   CardsCont,
@@ -7,42 +7,29 @@ import {
   SearchText
 } from './style';
 import Navbar from '../../components/Navbar';
-import movie from '../../services/movie';
+// import movie from '../../services/movie';
 import Card from '../../components/Card';
 import ImgMovie from '../../assets/img/movieInfo.jpg';
+import { MovieContext } from '../../context/movie/context';
 // import { setMovies } from '../../redux/modules/movies/actions';
 
 export default () => {
-  // const dispatch = useDispatch();
-  const [movies, setMovies] = useState([]);
-  const searchValue = useSelector(
-    ({ moviesReducer }) => moviesReducer.searchValue
-  );
+  const { searchMovie, movies, searchText } = useContext(MovieContext);
   useEffect(() => {
-    let unmounted = false;
-    Promise.all([movie.searchMovies(searchValue)]).then(
-      ([allMovies]) => {
-        if (!unmounted) {
-          setMovies(allMovies.Search);
-        }
-      }
-    );
-    return () => {
-      unmounted = true;
-    };
-  }, [setMovies]);
+    searchMovie('Batman');
+  }, []);
 
   return (
     <Container>
       <Navbar />
-      <SearchText>sdas</SearchText>
+      <SearchText>{ searchText }</SearchText>
       <CardsCont>
         {movies ? movies.map((item) => (
-          <CardItem key={Date.now()}>
+          <CardItem key={item.imdbID + Date.now()}>
             <Card
               title={item.Title}
               year={item.Year}
-              imdbId={item.imdbId}
+              imdbId={item.imdbID}
               type={item.Type}
               img={
                 item.Poster !== 'N/A'

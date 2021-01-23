@@ -1,19 +1,15 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useContext, useState } from 'react';
 import {
   Box, Input, Button, Icon
 } from './style';
-import { setSearchValue } from '../../../redux/modules/movies/actions';
+import { MovieContext } from '../../../context/movie/context';
 
 export default () => {
-  const dispatch = useDispatch();
-  const [value, setValue] = useState();
-
-  const handleSearch = (e) => {
-    dispatch(setSearchValue(e.target.value));
-    setValue(e.target.value);
+  const [value, setValue] = useState('');
+  const { searchMovie } = useContext(MovieContext);
+  const searchHandler = () => {
+    searchMovie(value.trim());
   };
-
   return (
     <Box>
       <Button>
@@ -22,7 +18,8 @@ export default () => {
       <Input
         type="input"
         value={value}
-        onChange={handleSearch}
+        onChange={(event) => setValue(event.target.value)}
+        onKeyUp={searchHandler}
         placeholder="search"
       />
     </Box>
