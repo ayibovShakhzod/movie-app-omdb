@@ -8,6 +8,11 @@ export const Navbar = styled.div`
   justify-content: space-evenly;
   padding: 14px 0;
   border-bottom: 1px solid #272727;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
 `;
 
 export const Logo = styled.h1`

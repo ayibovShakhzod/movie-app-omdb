@@ -1,17 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-// import { useSelector } from 'react-redux';
 import {
-  Container,
   CardsCont,
   CardItem,
   SearchText
 } from './style';
-import Navbar from '../../components/Navbar';
-// import movie from '../../services/movie';
 import Card from '../../components/Card';
 import ImgMovie from '../../assets/img/movieInfo.jpg';
 import { MovieContext } from '../../context/movie/context';
-// import { setMovies } from '../../redux/modules/movies/actions';
 
 export default () => {
   const { searchMovie, movies, searchText } = useContext(MovieContext);
@@ -20,8 +15,7 @@ export default () => {
   }, []);
 
   return (
-    <Container>
-      <Navbar />
+    <>
       <SearchText>{ searchText }</SearchText>
       <CardsCont>
         {movies ? movies.map((item) => (
@@ -40,6 +34,6 @@ export default () => {
           </CardItem>
         )) : null}
       </CardsCont>
-    </Container>
+    </>
   );
 };

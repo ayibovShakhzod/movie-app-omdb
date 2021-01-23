@@ -8,7 +8,7 @@ export const Card = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 70vh;
+  height: 80vh;
   width: 100%;
   object-fit: cover;
 `;
