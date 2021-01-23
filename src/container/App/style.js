@@ -21,4 +21,5 @@ export const Block = styled.div`
   width: 100%;
   background-color: #030303;
   color: #f0eeeb;
+  padding-top: 80px;
 `;

@@ -4,14 +4,12 @@ import { Container, Block } from './style';
 
 import Home from '../../views/Home';
 import Movie from '../../views/Movie';
-import Navbar from '../../components/Navbar';
 
 export default () => (
   <Block>
-    <Navbar />
     <Container>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route path="/" component={Home} exact />
         <Route path="/movie/:id" component={Movie} />
       </Switch>
     </Container>

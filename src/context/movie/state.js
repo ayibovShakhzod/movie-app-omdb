@@ -20,29 +20,39 @@ export default ({ children }) => {
     setLoading();
     Promise.all([request.searchMovies(value)]).then(
       ([response]) => {
-        const movie = !response.Search
+        const movies = !response.Search
           ? []
           : response.Search;
         dispatch({
           type: types.SEARCH_MOVIE,
-          payload: movie,
+          payload: movies,
           text: value
         });
       }
     );
   };
-
+  const getMovie = (value) => {
+    setLoading();
+    Promise.all([request.getMovie(value)]).then(
+      ([response]) => {
+        console.log(value);
+        const movie = !response.Title ? {} : response;
+        dispatch({
+          type: types.GET_MOVIE,
+          payload: movie
+        });
+      }
+    );
+  };
   const {
-    movies,
-    movie,
-    loading,
-    searchText
+    movies, movie, loading, searchText
   } = state;
   return (
     <MovieContext.Provider
       value={{
         searchMovie,
         setLoading,
+        getMovie,
         movies,
         movie,
         loading,

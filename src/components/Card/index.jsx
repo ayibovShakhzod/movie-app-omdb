@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Card,
   Img,
@@ -15,15 +16,19 @@ export default ({
   type,
   img,
   imdbId
-}) => (
-  <Card id={imdbId}>
-    <Img src={img} />
-    <Type>{type}</Type>
-    <BottomCard>
-      <Info>
-        <Year>{year}</Year>
-      </Info>
-      <Title>{title}</Title>
-    </BottomCard>
-  </Card>
-);
+}) => {
+  const { push } = useHistory();
+
+  return (
+    <Card onClick={() => push(`/movie/${imdbId}`)}>
+      <Img src={img} />
+      <Type>{type}</Type>
+      <BottomCard>
+        <Info>
+          <Year>{year}</Year>
+        </Info>
+        <Title>{title}</Title>
+      </BottomCard>
+    </Card>
+  );
+};
