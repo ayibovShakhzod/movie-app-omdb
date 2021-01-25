@@ -9,15 +9,15 @@ export default () => {
   const {
     searchMovie,
     movies,
-    searchText,
-    loading
+    searchText
+    // loading
   } = useContext(MovieContext);
   useEffect(() => {
     searchMovie('Batman');
   }, []);
-  if (loading) {
-    return <div>loading</div>;
-  }
+  // if (loading) {
+  //   return <div>loading</div>;
+  // }
   return (
     <>
       <Navbar />

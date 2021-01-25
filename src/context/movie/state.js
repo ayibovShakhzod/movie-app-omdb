@@ -35,8 +35,8 @@ export default ({ children }) => {
     setLoading();
     Promise.all([request.getMovie(value)]).then(
       ([response]) => {
-        console.log(value);
         const movie = !response.Title ? {} : response;
+        console.log(movie);
         dispatch({
           type: types.GET_MOVIE,
           payload: movie
