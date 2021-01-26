@@ -5,6 +5,7 @@ export const Card = styled.div`
   width: 100%;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 `;
 
 export const Img = styled.img`

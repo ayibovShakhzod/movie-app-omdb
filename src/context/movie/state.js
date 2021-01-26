@@ -9,7 +9,7 @@ export default ({ children }) => {
     movies: [],
     movie: {},
     loading: false,
-    searchText: ''
+    searchText: 'Batman'
   };
   const [state, dispatch] = useReducer(
     movieReducer,
@@ -26,7 +26,7 @@ export default ({ children }) => {
         dispatch({
           type: types.SEARCH_MOVIE,
           payload: movies,
-          text: value
+          searchText: value
         });
       }
     );

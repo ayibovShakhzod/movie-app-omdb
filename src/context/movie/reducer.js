@@ -1,11 +1,11 @@
 import types from '../../constants/action-types';
 
 const handlers = {
-  [types.SEARCH_MOVIE]: (state, { payload, text }) => ({
+  [types.SEARCH_MOVIE]: (state, { payload, searchText }) => ({
     ...state,
     movies: payload,
     loading: false,
-    searchText: text
+    searchText
   }),
   [types.GET_MOVIE]: (state, { payload }) => ({
     ...state,
